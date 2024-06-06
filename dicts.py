@@ -1,48 +1,40 @@
-
 def create_inventory(items):
-    """Create a dict that tracks the amount (count) of each element on the `items` list.
-
-    :param items: list - list of items to create an inventory from.
-    :return: dict - the inventory dictionary.
-    """
-    return {}
-
+    mydict=dict()
+    for i in range(0,len(items)):
+        if items[i] in mydict:
+            mydict[items[i]]
+        else:
+            mydict[items[i]]=1
+    return mydict
 
 def add_items(inventory, items):
-    """Add or increment items in inventory using elements from the items `list`.
-
-    :param inventory: dict - dictionary of existing inventory.
-    :param items: list - list of items to update the inventory with.
-    :return: dict - the inventory updated with the new items.
-    """
-    return {}
-
+    for key,value in enumerate(items):
+        if value in inventory:
+            inventory[value]+=1
+        else:
+            inventory[value]=1
+    return inventory
 
 def decrement_items(inventory, items):
-    """Decrement items in inventory using elements from the `items` list.
-
-    :param inventory: dict - inventory dictionary.
-    :param items: list - list of items to decrement from the inventory.
-    :return: dict - updated inventory with items decremented.
-    """
-    return {}
-
+    mydict = inventory
+    for i,value in enumerate(items):
+        if value in mydict and mydict[value]!=0:
+            mydict[value]-=1
+    return mydict
 
 def remove_item(inventory, item):
-    """Remove item from inventory if it matches `item` string.
-
-    :param inventory: dict - inventory dictionary.
-    :param item: str - item to remove from the inventory.
-    :return: dict - updated inventory with item removed. Current inventory if item does not match.
-    """
-    return {}
-
+    if item in inventory:
+        del inventory[item]
+    return inventory
 
 def list_inventory(inventory):
-    """Create a list containing all (item_name, item_count) pairs in inventory.
-
-    :param inventory: dict - an inventory dictionary.
-    :return: list of tuples - list of key, value pairs from the inventory dictionary.
-    """
-    return {}
-
+    listtodelete=[]
+    mylist=[]
+    for key, value in inventory.items():
+        if value == 0:
+            listtodelete.append(key)
+    for i in listtodelete:
+        del inventory[i]
+    for key,value in inventory.items():
+        mylist.append((key,value))  
+    return mylist
