@@ -2,7 +2,7 @@ def create_inventory(items):
     mydict=dict()
     for i in range(0,len(items)):
         if items[i] in mydict:
-            mydict[items[i]]
+            mydict[items[i]]+=1
         else:
             mydict[items[i]]=1
     return mydict
